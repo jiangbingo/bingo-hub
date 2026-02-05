@@ -3,7 +3,6 @@
  * 响应式导航菜单
  */
 
-import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Sidebar.module.css';
 
@@ -21,9 +20,13 @@ const menuItems: NavItem[] = [
   { path: '/history', icon: '📋', label: '历史记录' },
 ];
 
-export default function Sidebar() {
+interface SidebarProps {
+  isCollapsed: boolean;
+  onToggle: () => void;
+}
+
+export default function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
   const location = useLocation();
-  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -32,7 +35,7 @@ export default function Sidebar() {
       {/* 移动端遮罩层 */}
       <div
         className={`${styles.sidebarOverlay} ${!isCollapsed ? styles.sidebarOverlayOpen : ''}`}
-        onClick={() => setIsCollapsed(true)}
+        onClick={onToggle}
         aria-hidden="true"
       />
 
@@ -44,7 +47,7 @@ export default function Sidebar() {
         {/* 收起/展开按钮 */}
         <button
           className={styles.sidebarToggle}
-          onClick={() => setIsCollapsed(!isCollapsed)}
+          onClick={onToggle}
           aria-label={isCollapsed ? '展开侧边栏' : '收起侧边栏'}
           aria-expanded={!isCollapsed}
         >

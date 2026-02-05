@@ -37,7 +37,12 @@ const BingoHubIcon = () => (
   </svg>
 );
 
-export default function Header() {
+interface HeaderProps {
+  isSidebarCollapsed?: boolean;
+  onToggleSidebar?: () => void;
+}
+
+export default function Header({ isSidebarCollapsed, onToggleSidebar }: HeaderProps) {
   const location = useLocation();
   const isDashboard = location.pathname === '/dashboard';
 
@@ -47,6 +52,30 @@ export default function Header() {
       role="banner"
     >
       <div className={styles.headerLeft}>
+        {/* 侧边栏展开按钮 - 仅在侧边栏收起时显示 */}
+        {isSidebarCollapsed && onToggleSidebar && (
+          <button
+            className={styles.menuButton}
+            onClick={onToggleSidebar}
+            aria-label="展开侧边栏"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        )}
         <Link to="/dashboard" className={styles.logo} aria-label="BingoHub 首页">
           <BingoHubIcon />
           <span className={styles.logoText}>BingoHub</span>

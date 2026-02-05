@@ -132,6 +132,19 @@
   display: block;
 }
 
+/* 桌面端浮动展开按钮 - 当侧边栏收起时显示在左边缘 */
+@media (min-width: 768px) {
+  .sidebarCollapsed {
+    /* 显示一个小的提示区域在左边缘 */
+    border-right: 1px solid transparent;
+  }
+
+  .sidebarCollapsed:hover {
+    /* 鼠标悬停在左边缘时显示侧边栏 */
+    transform: translateX(0);
+  }
+}
+
 /* 响应式 */
 @media (max-width: 767px) {
   .sidebar {
