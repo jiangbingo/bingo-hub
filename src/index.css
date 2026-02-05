@@ -1,0 +1,182 @@
+/**
+ * BingoHub - Main Styles
+ * 主样式入口文件
+ */
+
+/* ============================================
+   1. 设计系统 (CSS 变量)
+   ============================================ */
+@import './styles/theme.css';
+
+/* ============================================
+   2. 全局样式
+   ============================================ */
+@import './styles/globals.css';
+
+/* ============================================
+   3. Tailwind CSS (通过 CDN)
+   ============================================ */
+/* Tailwind 已在 index.html 中通过 CDN 引入 */
+
+/* ============================================
+   4. 自定义组件样式
+   ============================================ */
+
+/* 应用根容器 */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* 路由过渡 */
+.page-transition {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 消息气泡样式优化 */
+.message-bubble {
+  max-width: 80%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.message-bubble.user {
+  margin-left: auto;
+  background: var(--primary-600);
+  color: var(--text-inverse);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 var(--radius-xl);
+}
+
+.message-bubble.assistant {
+  margin-right: auto;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-radius: var(--radius-xl) var(--radius-xl) var(--radius-xl) 0;
+}
+
+.message-bubble.streaming {
+  background: var(--primary-100);
+  color: var(--text-primary);
+}
+
+/* 打字光标动画 */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: currentColor;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  vertical-align: text-bottom;
+}
+
+/* ============================================
+   5. 工具类
+   ============================================ */
+
+/* 居中 */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 全屏 */
+.fullscreen {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* 隐藏滚动条但保留功能 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* 文本省略 */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================
+   6. 响应式工具类
+   ============================================ */
+
+/* 移动端优化 */
+@media (max-width: 767px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+
+  .mobile-full {
+    width: 100%;
+  }
+}
+
+/* 桌面端优化 */
+@media (min-width: 768px) {
+  .desktop-hidden {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   7. 打印样式
+   ============================================ */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+}

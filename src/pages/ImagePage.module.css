@@ -1,0 +1,59 @@
+.imagePage {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-6);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.pageTitle {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-3);
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pageSubtitle {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 响应式 */
+@media (max-width: 767px) {
+  .imagePage {
+    padding: var(--spacing-4);
+  }
+
+  .pageHeader {
+    margin-bottom: var(--spacing-6);
+  }
+
+  .pageTitle {
+    font-size: var(--text-2xl);
+  }
+
+  .pageSubtitle {
+    font-size: var(--text-base);
+  }
+}

@@ -1,0 +1,33 @@
+.videoPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-6);
+}
+
+.videoHeader {
+  margin-bottom: var(--spacing-6);
+  text-align: center;
+}
+
+.videoTitle {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-2);
+}
+
+.videoSubtitle {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+}
+
+/* 响应式 */
+@media (max-width: 767px) {
+  .videoPage {
+    padding: var(--spacing-4);
+  }
+
+  .videoTitle {
+    font-size: var(--text-2xl);
+  }
+}
