@@ -5,30 +5,52 @@
 
 import React, { useState, useEffect } from 'react';
 import { useAdmin } from '@/auth/authContext';
+import { supabase } from '@/auth/supabaseClient';
 import type { LoginLog } from '@/auth/types';
 
 export function LoginLogs() {
   const { isAdmin } = useAdmin();
   const [logs, setLogs] = useState<LoginLog[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<'all' | 'success' | 'failed'>('all');
   const [methodFilter, setMethodFilter] = useState<'all' | 'github' | 'email'>('all');
 
   useEffect(() => {
-    fetchLogs();
-  }, []);
+    if (isAdmin) {
+      fetchLogs();
+    }
+  }, [isAdmin]);
 
   async function fetchLogs() {
     setLoading(true);
+    setError(null);
     try {
-      // 这里调用 API 获取日志
-      const response = await fetch('/api/admin/logs');
+      // 获取当前 session
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        setError('未登录');
+        return;
+      }
+
+      // 调用 API 获取日志，带上认证 token
+      const response = await fetch('/api/admin/logs', {
+        headers: {
+          'Authorization': `Bearer ${session.access_token}`,
+        },
+      });
+
       if (response.ok) {
         const data = await response.json();
-        setLogs(data);
+        setLogs(data.logs || []);
+      } else if (response.status === 403) {
+        setError('无权访问');
+      } else {
+        setError('获取日志失败');
       }
-    } catch (error) {
-      console.error('获取日志失败:', error);
+    } catch (err) {
+      console.error('获取日志失败:', err);
+      setError('网络错误');
     } finally {
       setLoading(false);
     }
