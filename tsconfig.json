@@ -10,8 +10,14 @@
       "DOM.Iterable"
     ],
     "skipLibCheck": true,
+
+    // 渐进式严格模式 - 只启用部分选项（推荐）
+    "strictNullChecks": true,
+
     "types": [
-      "node"
+      "node",
+      "react",
+      "react-dom"
     ],
     "moduleResolution": "bundler",
     "isolatedModules": true,

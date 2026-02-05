@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './auth/authContext';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import MainLayout from './components/layout/MainLayout';
 import Dashboard from './pages/Dashboard';
 import LoginPage from './pages/LoginPage';
@@ -12,9 +13,10 @@ import AdminLogsPage from './pages/AdminLogsPage';
 
 function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Routes>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
           {/* 登录页面 */}
           <Route path="/login" element={<LoginPage />} />
 
@@ -57,6 +59,7 @@ function App() {
         </Routes>
       </AuthProvider>
     </BrowserRouter>
+    </ErrorBoundary>
   );
 }
 
