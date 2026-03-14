@@ -53,6 +53,18 @@ export default function Dashboard() {
 
   return (
     <div className={styles.dashboardPage}>
+      {/* 顶部导航 */}
+      <div className={styles.topNav}>
+        <a
+          href="https://bingoailabs.vercel.app"
+          className={styles.platformLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          🏠 平台首页
+        </a>
+      </div>
+
       {/* 头部 */}
       <div className={styles.dashboardHeader}>
         <h1 className={styles.dashboardTitle}>BingoHub Explorer</h1>
