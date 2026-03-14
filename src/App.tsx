@@ -10,6 +10,7 @@ import VideoPage from './pages/VideoPage';
 import HistoryPage from './pages/HistoryPage';
 import ImagePage from './pages/ImagePage';
 import AdminLogsPage from './pages/AdminLogsPage';
+import ToolsPage from './pages/ToolsPage';
 
 function App() {
   return (
@@ -56,6 +57,9 @@ function App() {
 
           {/* 管理员专用路由 */}
           <Route path="/admin/logs" element={<AdminLogsPage />} />
+
+          {/* 图片处理工具（公开访问）*/}
+          <Route path="/tools" element={<ToolsPage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
