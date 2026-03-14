@@ -58,8 +58,17 @@ function App() {
           {/* 管理员专用路由 */}
           <Route path="/admin/logs" element={<AdminLogsPage />} />
 
-          {/* 图片处理工具（公开访问）*/}
-          <Route path="/tools" element={<ToolsPage />} />
+          {/* 图片处理工具（公开访问，使用 MainLayout 保持导航一致性）*/}
+          <Route path="/tools" element={
+            <MainLayout>
+              <ToolsPage />
+            </MainLayout>
+          } />
+          <Route path="/tools/:toolId" element={
+            <MainLayout>
+              <ToolsPage />
+            </MainLayout>
+          } />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

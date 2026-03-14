@@ -41,6 +41,14 @@ export default function Dashboard() {
       color: 'var(--pink-600)',
       gradient: 'from-pink-500 to-pink-600',
     },
+    {
+      path: '/tools',
+      icon: '🖼️',
+      title: '图片处理',
+      desc: 'AI 图片压缩、证件照、放大、格式转换',
+      color: 'var(--green-600)',
+      gradient: 'from-green-500 to-green-600',
+    },
   ];
 
   return (
