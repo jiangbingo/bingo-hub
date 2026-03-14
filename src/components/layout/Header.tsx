@@ -83,6 +83,17 @@ export default function Header({ isSidebarCollapsed, onToggleSidebar }: HeaderPr
       </div>
 
       <div className={styles.headerCenter}>
+        {/* 平台首页链接 */}
+        <a
+          href="https://bingoailabs.vercel.app"
+          className={styles.platformLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="访问平台首页"
+        >
+          🏠 平台首页
+        </a>
+
         {!isDashboard && (
           <Link
             to="/dashboard"

@@ -71,6 +71,26 @@
   flex: 1;
   display: flex;
   justify-content: center;
+  gap: var(--spacing-4);
+}
+
+.platformLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  border: 1px solid var(--border-secondary);
+}
+
+.platformLink:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+  border-color: var(--border-primary);
 }
 
 .backLink {
